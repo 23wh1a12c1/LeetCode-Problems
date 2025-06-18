@@ -1,6 +1,3 @@
-# Java
-
-
 import java.util.*;
 
 class Solution {
