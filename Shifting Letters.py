@@ -30,6 +30,32 @@ class Solution {
     }
 }
 
+         #######  prefix sum logic
+
+class Solution {
+    public String shiftingLetters(String s, int[] shifts) {
+        int n = s.length();
+        long[] suffixShifts = new long[n];
+        
+        // Start from the end, accumulate total shifts
+        suffixShifts[n - 1] = shifts[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            suffixShifts[i] = (suffixShifts[i + 1] + shifts[i]) % 26;
+        }
+
+        // Apply the shift to each character
+        char[] result = s.toCharArray();
+        for (int i = 0; i < n; i++) {
+            int original = result[i] - 'a';
+            int shifted = (original + (int)suffixShifts[i]) % 26;
+            result[i] = (char)('a' + shifted);
+        }
+
+        return new String(result);
+    }
+}
+
+
 
 
 
